@@ -151,8 +151,16 @@ describe('yeoman init && yeoman build', function() {
 
     describe('build', function() {
       it('should output the list of task at the beginning of the build', function() {
-        this.yeoman
-          .expect(/intro clean coffee compass mkdirs usemin-handler rjs concat css img rev usemin manifest copy time/);
+        this.yeoman.expect(/intro clean/);
+        this.yeoman.expect(/mkdirs usemin-handler rjs concat css img rev usemin/);
+
+        if( this.compass ) {
+          this.yeoman.expect(/compass mkdirs/);
+        }
+
+        if( this.phantomjs) {
+          this.yeoman.expect(/usemin manifest copy/);
+        }
       });
     });
 
