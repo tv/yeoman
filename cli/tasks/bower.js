@@ -35,6 +35,14 @@ module.exports = function(grunt) {
     // figure out the alternate install location, if any
     var directory = grunt.config('bower.dir');
 
+
+    var basePath = 'app';
+    var appIndexPath  = path.resolve(path.join(basePath + '/index.html'));
+    var indexBuffer = fs.readFileSync(appIndexPath, 'utf8');
+    var scripts = "    <script src='components/" + args[1] + "/" + args[1] +".js'></script>";
+    indexBuffer = indexBuffer.replace('<!-- Google Analytics:', scripts + '\n    <!-- Google Analytics:');
+    fs.writeFileSync(appIndexPath, indexBuffer, 'utf8');
+
     // run
     var cb = this.async();
     command.line(process.argv)

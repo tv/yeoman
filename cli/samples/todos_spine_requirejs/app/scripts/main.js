@@ -6,9 +6,7 @@ require.config({
   },
   hm: 'hm',
 paths: {
-    jquery: '../../components/jquery',
-
-    jquery: 'components/jquery/jquery',
+    jquery: 'vendor/jquery',
     spine: 'components/spine/lib/spine',
     cs: "vendor/cs",
     json2: "vendor/json2",
